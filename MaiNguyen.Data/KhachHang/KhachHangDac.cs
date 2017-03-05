@@ -1,6 +1,10 @@
 ﻿using log4net;
 using MaiNguyen.Data.UnitOfWork;
+using MaiNguyen.Entities.KhachHang;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MaiNguyen.Data.KhachHang
 {
@@ -22,5 +26,20 @@ namespace MaiNguyen.Data.KhachHang
             _unitOfWork = unitOfWork;
         }
         #endregion Dung chung
+        public List<KhachHangModel> GetTest()
+        {
+            try
+            {
+                // Database db = DatabaseFactory.CreateDatabase(QLVANCHUYEN_CONNECTION);
+                return _database.ExecuteSprocAccessor<KhachHangModel>("GetDanhSach").ToList();
+            }
+            catch (Exception ex)
+            {
+                log4net.Config.XmlConfigurator.Configure();
+                log.Error(ex.Message);
+                return null;
+            }
+
+        }
     }
 }

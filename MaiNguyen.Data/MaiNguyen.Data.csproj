@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="DataAccessCommon.cs" />
     <Compile Include="DataAccessComponent.cs" />
+    <Compile Include="KhachHang\KhachHangDac.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDac.cs" />
     <Compile Include="UnitOfWork\DatabaseFactories.cs" />
