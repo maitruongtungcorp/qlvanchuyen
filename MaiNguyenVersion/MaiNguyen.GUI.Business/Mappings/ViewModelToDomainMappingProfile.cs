@@ -15,7 +15,6 @@ namespace MaiNguyen.GUI.Business.Mappings
         protected override void Configure()
         {
             Mapper.CreateMap<TestModel, TestViewModel>();
-            Mapper.CreateMap<KhachHangModel, KhachHangViewModel>();
         }
     }
 }
