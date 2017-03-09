@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DM_LyDoThatBai\DM_LyDoThatBaiModel.cs" />
+    <Compile Include="DM_LyDoThatBai\DM_LyDoThatBaiPagingCriteria.cs" />
     <Compile Include="KhachHang\KhachHangModel.cs" />
     <Compile Include="KhachHang\KhachHangPagingCriteria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

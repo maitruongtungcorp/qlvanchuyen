@@ -1,0 +1,62 @@
+﻿@model PagedList.IPagedList<MaiNguyen.Entities.DM_LyDoThatBai.DM_LyDoThatBaiModel>
+@using PagedList.Mvc;
+<table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 160px;">ID</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261px;">Lý do thất bại</th>
+            <th>Xóa</th>
+            <th>Người tạo</th>
+            <th>Ngày tạo</th>
+            <th>Người sửa</th>
+            <th>Ngày sửa</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 118px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr role="row" class="odd">
+                <td class="sorting_1">@item.Id</td>
+                <td>@item.LyDo</td>
+                <td>@item.Deleted</td>
+                <td>@item.CreatedBy</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.ModifiedBy</td>
+                <td>@item.ModifiedDate</td>
+                <td class="text-center">
+                    @*<a style="margin:0 5px;"><i class="fa fa-trash fa-2x red"></i></a>
+                        <a><i class="fa fa-edit fa-2x green"></i></a>*@
+                    <a title="Sửa" class="link-edit" href="/DM_LyDoThatBai/edit/@item.Id" style="margin:0 5px;"><i class="fa fa-pencil-square fa-2x"></i></a>
+                    <a data-id="@item.Id" title="Xóa" class="link-delete" href="#" style="margin:0 5px;"><i class="fa fa-times-circle fa-2x"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination-box">
+    @{ int st = (Model.PageNumber * Model.PageSize) - Model.PageSize + 1; int et = st + Model.Count - 1; }
+    <div class="pagination-showingnow col-xs-3 ">
+        @if (Model.TotalItemCount > 0)
+        {
+            <strong>Showing @st to @et of @Model.TotalItemCount</strong>
+        }
+        else
+        {
+            <strong>Không có dữ liệu</strong>
+        }
+    </div>
+    <div class="pagination-pages  col-xs-6 text-center">
+        @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+    </div>
+    <div class="pagination-pagesize  col-xs-3 text-right">
+        <strong>Page Size:</strong>
+        <select id="select-page-size">
+            <option value="10" @(Model.PageSize == 10 ? "selected=selected" : "")>10</option>
+            <option value="25" @(Model.PageSize == 25 ? "selected=selected" : "")>25</option>
+            <option value="50" @(Model.PageSize == 50 ? "selected=selected" : "")>50</option>
+            <option value="100" @(Model.PageSize == 100 ? "selected=selected" : "")>100</option>
+        </select>
+    </div>
+    <div style="clear:both;"></div>
+</div>

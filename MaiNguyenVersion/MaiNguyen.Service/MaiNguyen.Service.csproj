@@ -39,6 +39,14 @@
     <Reference Include="MaiNguyen.Entities">
       <HintPath>..\MaiNguyen.Entities\bin\Debug\MaiNguyen.Entities.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,11 +57,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\DM_LyDoThatBai\DM_LyDoThatBaiServices.cs" />
     <Compile Include="Implements\KhachHang\KhachHangServices.cs" />
     <Compile Include="Implements\TestService.cs" />
+    <Compile Include="Interfaces\DM_LyDoThatBai\IDM_LyDoThatBaiServices.cs" />
     <Compile Include="Interfaces\ITestService.cs" />
     <Compile Include="Interfaces\KhachHang\IKhachHangServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

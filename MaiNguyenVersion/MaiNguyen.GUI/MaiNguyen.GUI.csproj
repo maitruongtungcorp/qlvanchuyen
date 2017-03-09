@@ -73,6 +73,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\HanhChinh.SRV\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -192,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DM_LyDoThatBaiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,10 +229,12 @@
     <Content Include="Content\images\prod-5.jpg" />
     <Content Include="Content\images\user.png" />
     <Content Include="Content\images\visa.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\DM_LyDoThatBai\DM_LyDoThatBai.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -252,6 +263,8 @@
     <Content Include="UI\Chart.js\Chart.bundle.min.js" />
     <Content Include="UI\Chart.js\Chart.js" />
     <Content Include="UI\Chart.js\Chart.min.js" />
+    <Content Include="UI\Common\common-list.js" />
+    <Content Include="UI\Common\common.js" />
     <Content Include="UI\DateJS\date.js" />
     <Content Include="UI\fastclick\fastclick.js" />
     <Content Include="UI\flot-spline\js\jquery.flot.spline.js" />
@@ -476,6 +489,7 @@
     <Content Include="UI\nprogress\support\extras.css" />
     <Content Include="UI\nprogress\support\style.css" />
     <Content Include="UI\skycons\skycons.js" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -581,7 +595,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\KhachHang\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -628,6 +641,9 @@
     <Content Include="UI\font-awesome\scss\_screen-reader.scss" />
     <Content Include="UI\font-awesome\scss\_stacked.scss" />
     <Content Include="UI\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\DM_LyDoThatBai\Index.cshtml" />
+    <Content Include="Views\DM_LyDoThatBai\List.cshtml" />
+    <Content Include="Views\Shared\_LeftMenuStatic.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
