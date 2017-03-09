@@ -45,6 +45,7 @@
     <Compile Include="DM_LyDoThatBai\DM_LyDoThatBaiPagingCriteria.cs" />
     <Compile Include="KhachHang\KhachHangModel.cs" />
     <Compile Include="KhachHang\KhachHangPagingCriteria.cs" />
+    <Compile Include="Login\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestModel.cs" />
   </ItemGroup>

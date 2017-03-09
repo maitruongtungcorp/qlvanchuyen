@@ -59,10 +59,12 @@
   <ItemGroup>
     <Compile Include="Implements\DM_LyDoThatBai\DM_LyDoThatBaiServices.cs" />
     <Compile Include="Implements\KhachHang\KhachHangServices.cs" />
+    <Compile Include="Implements\Login\LoginServices.cs" />
     <Compile Include="Implements\TestService.cs" />
     <Compile Include="Interfaces\DM_LyDoThatBai\IDM_LyDoThatBaiServices.cs" />
     <Compile Include="Interfaces\ITestService.cs" />
     <Compile Include="Interfaces\KhachHang\IKhachHangServices.cs" />
+    <Compile Include="Interfaces\Login\ILoginServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

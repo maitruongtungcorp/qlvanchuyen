@@ -64,14 +64,17 @@
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="Implements\DM_LyDoThatBaiBus\DM_LyDoThatBaiBusinessUI.cs" />
     <Compile Include="Implements\KhachHangBus\KhachHangBusinessUI.cs" />
+    <Compile Include="Implements\Login\LoginBusinessUI.cs" />
     <Compile Include="Implements\TestBusinessUI.cs" />
     <Compile Include="Interfaces\DM_LyDoThatBaiBus\IDM_LyDoThatBaiBusinessUI.cs" />
     <Compile Include="Interfaces\ITestBusinessUI.cs" />
     <Compile Include="Interfaces\KhachHangBus\IKhachHangBusinessUI.cs" />
+    <Compile Include="Interfaces\Login\ILoginBusinessUI.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\DM_LyDoThatBaiViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +83,7 @@
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

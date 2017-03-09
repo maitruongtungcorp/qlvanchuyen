@@ -203,6 +203,7 @@
     <Compile Include="Controllers\DM_LyDoThatBaiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +243,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="UI\animate.css\animate.css" />
+    <Content Include="UI\animate.css\animate.min.css" />
+    <Content Include="UI\animate.css\gulpfile.js" />
     <Content Include="UI\bootstrap-daterangepicker\daterangepicker.css" />
     <Content Include="UI\bootstrap-daterangepicker\daterangepicker.js" />
     <Content Include="UI\bootstrap-progressbar\bootstrap-progressbar-3.3.4.min.css" />
@@ -644,6 +648,11 @@
     <Content Include="Views\DM_LyDoThatBai\Index.cshtml" />
     <Content Include="Views\DM_LyDoThatBai\List.cshtml" />
     <Content Include="Views\Shared\_LeftMenuStatic.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="UI\animate.css\.bower.json" />
+    <Content Include="UI\animate.css\animate-config.json" />
+    <Content Include="UI\animate.css\bower.json" />
+    <Content Include="UI\animate.css\package.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

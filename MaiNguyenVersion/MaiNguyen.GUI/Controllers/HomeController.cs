@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MaiNguyen.GUI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         ITestBusinessUI bus = new TestBusinessUI();

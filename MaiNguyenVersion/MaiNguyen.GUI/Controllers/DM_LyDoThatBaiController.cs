@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MaiNguyen.GUI.Controllers
 {
+    [Authorize]
     public class DM_LyDoThatBaiController : Controller
     {
         IDM_LyDoThatBaiBusinessUI bus = new DM_LyDoThatBaiBusinessUI();
