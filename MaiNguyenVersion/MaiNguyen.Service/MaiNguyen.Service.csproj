@@ -48,6 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,11 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implements\Common\CommonService.cs" />
+    <Compile Include="Implements\DM_DonViGiaoHang\DM_DonViGiaoHangServices.cs" />
     <Compile Include="Implements\DM_LyDoThatBai\DM_LyDoThatBaiServices.cs" />
+    <Compile Include="Implements\DM_NhaCungCap\DM_NhaCungCapServices.cs" />
     <Compile Include="Implements\KhachHang\KhachHangServices.cs" />
     <Compile Include="Implements\Login\LoginServices.cs" />
     <Compile Include="Implements\TestService.cs" />
+    <Compile Include="Interfaces\Common\ICommonService.cs" />
+    <Compile Include="Interfaces\DM_DonViGiaoHang\IDM_DonViGiaoHangServices.cs" />
     <Compile Include="Interfaces\DM_LyDoThatBai\IDM_LyDoThatBaiServices.cs" />
+    <Compile Include="Interfaces\DM_NhaCungCap\IDM_NhaCungCapServices.cs" />
     <Compile Include="Interfaces\ITestService.cs" />
     <Compile Include="Interfaces\KhachHang\IKhachHangServices.cs" />
     <Compile Include="Interfaces\Login\ILoginServices.cs" />

@@ -2,6 +2,7 @@
 using MaiNguyen.GUI.Business.ViewModel;
 using MaiNguyen.Entities;
 using System.Collections.Generic;
+using MaiNguyen.Entities.KhachHang;
 
 namespace MaiNguyen.GUI.Business.Mappings
 {

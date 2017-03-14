@@ -24,18 +24,19 @@ namespace MaiNguyen.GUI.Controllers
                 return RedirectToAction("login");
             }
         }
-        public ActionResult Login()
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
         {
             if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
-
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public JsonResult Login(string username, string password, bool rememberMe = false)
+        public JsonResult Login(string username, string password, string returnUrl, bool rememberMe = false)
         {
             try
             {
@@ -47,18 +48,18 @@ namespace MaiNguyen.GUI.Controllers
                     //string cs = model.Id + " " + model.LastName + " " + model.Password;
                     HttpCookie cookie = new HttpCookie("_nsinfo");
                     //cookie["cs"] = DSB.Core.Helpers.CryptoHelpers.EncryptStringAES(cs, DSB.Core.Constants.SHARED_SECRET);
-                    cookie["store"] = model.LastName;
+                    //cookie["store"] = model.LastName;
+                    cookie["name"] = model.LastName;
                     cookie["storeId"] = model.Id.ToString();
-                    cookie["storeAddress"] = model.Address;
-                    cookie["storePhone"] = model.Phone.ToString();
+                    //cookie["storeAddress"] = model.Address;
+                    cookie["address"] = model.Address;
+                    cookie["phone"] = model.Phone.ToString();
                     cookie.Expires = DateTime.Today.AddDays(1);
                     Response.Cookies.Add(cookie);
 
                     FormsAuthentication.SetAuthCookie(username, rememberMe);
-                    //redirect url
-                    string url = "/";
 
-                    return Json(new { Result = true, Url = url });
+                    return Json(new { Result = true, Url = returnUrl });
                 }
                 else
                 {

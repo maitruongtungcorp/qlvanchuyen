@@ -25,6 +25,6 @@ namespace MaiNguyen.Entities.DM_LyDoThatBai
         [DataMember]
         public string ModifiedDate { get; set; }
         [DataMember]
-        public int total { get; set; }
+        public int Total { get; set; }
     }
 }

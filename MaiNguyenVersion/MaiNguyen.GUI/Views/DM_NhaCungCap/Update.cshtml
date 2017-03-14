@@ -1,0 +1,105 @@
+﻿@using MaiNguyen.Entities.Common;
+@{
+    ViewBag.Title = "Thêm mới";
+}
+<link href="@Url.Content("~/Content/khachHang.css")" rel="stylesheet">
+<script src="@Url.Content("~/Scripts/dm_nhacungcap.js")" type="text/javascript"></script>
+@model MaiNguyen.Entities.DM_NhaCungCap.DM_NhaCungCapAddModel
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Chi tiết danh mục</h2>
+                <div class="text-right">
+                    <a href="@Url.Action("Index")" class="btn btn-default btn-sm"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Trờ về</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                @using (Html.BeginForm("Update", "DM_NhaCungCap", FormMethod.Post, new { @id = "form-update-khachhang", @class = "cmxform form-horizontal form-label-left" }))
+                {
+
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Mã danh mục
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Id, new { @class = "form-control col-md-7 col-xs-12", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên nhà cung cấp <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Ten, new { @class = "form-control col-md-7 col-xs-12" })
+                            @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "required" })
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Xóa <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.Deleted, new { @class = "form-control col-md-7 col-xs-12" })
+                            @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "required" })
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Người tạo <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control col-md-7 col-xs-12" })
+                            @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "required" })
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Ngày tạo <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control col-md-7 col-xs-12" })
+                            @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "required" })
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Người sửa <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.ModifiedBy, new { @class = "form-control col-md-7 col-xs-12" })
+                            @Html.ValidationMessageFor(model => model.ModifiedBy, "", new { @class = "required" })
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Ngày sửa <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.ModifiedDate, new { @class = "form-control col-md-7 col-xs-12" })
+                            @Html.ValidationMessageFor(model => model.ModifiedDate, "", new { @class = "required" })
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu</button>
+                            <a href="@Url.Action("Index")" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i> Hủy</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DM_NhaCungCap)) {
+            Common.DM_NhaCungCap = new DM_NhaCungCap({
+                TenDangNhap:'@ViewBag.TenDangNhap'
+            });
+        }
+    });
+</script>

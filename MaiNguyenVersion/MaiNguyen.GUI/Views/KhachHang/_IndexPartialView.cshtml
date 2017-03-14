@@ -1,0 +1,79 @@
+﻿@model MaiNguyen.GUI.Business.ViewModel.KhachHang.KhachHangViewModel
+@using PagedList.Mvc;
+@using MaiNguyen.GUI.Business.Common;
+@if (Model != null)
+{
+    if (Model.Items != null)
+    {
+        if (Model.Items.Any())
+        {
+            int i = 0;
+            <table id="table-khachang" class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th>Mã KH</th>
+                        <th>Tên khách hàng</th>
+                        <th>Điện thoại</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Công ty</th>
+                        <th>Sales</th>
+                        <th>Số đơn hàng</th>
+                        <th class="text-center" width="12%">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td class="text-center">@(++i)</td>
+                            <td>@item.MaKH</td>
+                            <td>@item.TenKH</td>
+                            <td>@item.DienThoai</td>
+                            <td>@item.Email</td>
+                            <td>@item.DiaChi</td>
+                            <td>@item.TenCongTy</td>
+                            <td>@item.Sales</td>
+                            <td>@item.SoDonHang</td>
+                            <td class="text-center padding5">
+                                <a href="@Url.Action("Update", "KhachHang", new { id = item.Id })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn btn-danger btn-xs delete-khachHang" data-value="@item.Id"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        <!--- Pagination -->
+            <div class="paging-bottom">
+                @Html.Raw(Ajax.Pager(
+                    new Options
+                    {
+                        PageSize = Model.Items.PageSize,
+                        TotalItemCount = Model.Items[0].Total,
+                        CurrentPage = Model.Items.PageNumber,
+                        IsShowControls = true,
+                        IsShowFirstLast = true,
+                        LimitPage = 7,
+                        Link = "javascript:void(0);",
+                        OnClick = "Common.KhachHang.Paging({0})"
+                    }))
+            </div>
+        <!--- End Pagination -->
+
+        }
+        else
+        {
+            @Html.Partial("_AlertInfo", "Không có dữ liệu");
+        }
+    }
+    else
+    {
+        @Html.Partial("_AlertInfo", "Không có dữ liệu");
+    }
+}
+else
+{
+    @Html.Partial("_AlertInfo", "Không có dữ liệu");
+}

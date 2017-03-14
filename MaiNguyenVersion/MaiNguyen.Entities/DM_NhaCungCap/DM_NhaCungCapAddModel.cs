@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaiNguyen.GUI.Business.ViewModel
+namespace MaiNguyen.Entities.DM_NhaCungCap
 {
-    public class DM_LyDoThatBaiViewModel
+    [DataContract]
+    public class DM_NhaCungCapAddModel
     {
-        public int Id { set; get; }
-        public string LyDo { set; get; }
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string Ten { get; set; }
+        [DataMember]
         public int Deleted { get; set; }
+        [DataMember]
         public string CreatedBy { get; set; }
+        [DataMember]
         public DateTime CreatedDate { get; set; }
+        [DataMember]
         public string ModifiedBy { get; set; }
+        [DataMember]
         public DateTime ModifiedDate { get; set; }
-        public int total { get; set; }
     }
 }

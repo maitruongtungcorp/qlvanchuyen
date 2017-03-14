@@ -43,6 +43,10 @@
     <Reference Include="MaiNguyen.Service">
       <HintPath>..\MaiNguyen.Service\bin\Debug\MaiNguyen.Service.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -52,7 +56,33 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,28 +92,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Common\AjaxPagingExtensions.cs" />
+    <Compile Include="Common\AlertDecoratorResult.cs" />
+    <Compile Include="Common\AlertExtensions.cs" />
+    <Compile Include="Common\BaseQuery.cs" />
+    <Compile Include="Common\ConfigSettings.cs" />
+    <Compile Include="Implements\CommonBus\CommonBusinessUI.cs" />
+    <Compile Include="Implements\DM_DonViGiaoHang\DM_DonViGiaoHangBusinessUI.cs" />
     <Compile Include="Implements\DM_LyDoThatBaiBus\DM_LyDoThatBaiBusinessUI.cs" />
+    <Compile Include="Implements\DM_NhaCungCapBus\DM_NhaCungCapBusinessUI.cs" />
     <Compile Include="Implements\KhachHangBus\KhachHangBusinessUI.cs" />
     <Compile Include="Implements\Login\LoginBusinessUI.cs" />
     <Compile Include="Implements\TestBusinessUI.cs" />
+    <Compile Include="Interfaces\CommonBus\ICommonBusinessUI.cs" />
+    <Compile Include="Interfaces\DM_DonViGiaoHang\IDM_DonViGiaoHangBusinessUI.cs" />
     <Compile Include="Interfaces\DM_LyDoThatBaiBus\IDM_LyDoThatBaiBusinessUI.cs" />
+    <Compile Include="Interfaces\DM_NhaCungCapBus\IDM_NhaCungCapBusinessUI.cs" />
     <Compile Include="Interfaces\ITestBusinessUI.cs" />
     <Compile Include="Interfaces\KhachHangBus\IKhachHangBusinessUI.cs" />
     <Compile Include="Interfaces\Login\ILoginBusinessUI.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\DM_LyDoThatBaiViewModel.cs" />
+    <Compile Include="ThongBaoHeThong.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongBaoHeThong.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AlertViewModel.cs" />
+    <Compile Include="ViewModel\DM_DonViGiaoHang\DM_DonViGiaoHangViewModel.cs" />
+    <Compile Include="ViewModel\DM_LyDoThatBai\DM_LyDoThatBaiViewModel.cs" />
+    <Compile Include="ViewModel\DM_NhaCungCap\DM_NhaCungCapViewModel.cs" />
+    <Compile Include="ViewModel\KhachHang\KhachHangViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ThongBaoHeThong.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThongBaoHeThong.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

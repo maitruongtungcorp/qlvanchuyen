@@ -31,6 +31,7 @@
                 <section class="login_content">
                     <form>
                         <h1>Đăng nhập</h1>
+                        <input type="text" hidden value="@ViewBag.ReturnUrl" name="ReturnUrl" id="ReturnUrl" />
                         <div style="color:Red;text-align: center;" id="login-failed"></div>
                         <div>
                             <input autocomplete="off" id="username" name="username" type="text" class="form-control" placeholder="Username" required="">
@@ -89,6 +90,7 @@
 
                 var username = $("#username").val();
                 var password = $("#password").val();
+                var returnUrl = $("#ReturnUrl").val();
 
                 var valid = true;
                 if (username == "" || username == null) {
@@ -110,6 +112,7 @@
                 var jsonData = {};
                 jsonData["username"] = username;
                 jsonData["password"] = password;
+                jsonData["returnUrl"] = returnUrl;
 
                 $.ajax({
                     type: 'POST',
@@ -121,6 +124,7 @@
                         if (data.Result) {
                             $("#auth-mes").html("Login thành công. Đang chuyển hướng...");
                             window.location.href = data.Url;
+                            ThongBao();
                         }
                         else {
                             $("#auth-mes").hide();
@@ -136,7 +140,26 @@
                 });
             });
         });
-
+        function ThongBao() {
+            var notify;
+            notify = new Notification(
+                        // Tiêu đề thông báo
+                        'Bạn có một thông báo mới từ website',
+                        {
+                            // Nội dung thông báo
+                            body: 'Đăng nhập thành công.',
+                            // Hình ảnh
+                            icon: 'https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/13882257_1566609303644999_2918563871652654024_n.jpg?oh=6f58e0a1f2c90df438669011ed8ed8c7&oe=596DAAAA',
+                            // Đường dẫn
+                            tag: 'http://localhost:37536/'
+                        }
+                );
+            // Thực hiện khi nhấp vào thông báo
+            notify.onclick = function () {
+                // Di chuyển đến trang cho url = tag
+                window.location.href = this.tag;
+            }
+        }
     </script>
 </body>
 </html>

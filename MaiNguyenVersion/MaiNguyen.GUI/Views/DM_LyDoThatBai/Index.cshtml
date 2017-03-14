@@ -1,105 +1,77 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh mục lý do thất bại";
 }
-<div class="">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Danh mục lý do thất bại</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li>
-                            <button class="btn btn-primary"><i class="fa fa-plus"></i> Thêm mới</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-danger"><i class="fa fa-file-excel-o"></i> Export excel</button>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
+@model MaiNguyen.GUI.Business.ViewModel.DM_LyDoThatBai.DM_LyDoThatBaiViewModel
+
+<link href="@Url.Content("~/Content/khachHang.css")" rel="stylesheet">
+<script src="@Url.Content("~/Scripts/dm_lydothatbai.js")" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Danh mục lý do thất bại</h2>
+                <div class="text-right">
+                    <a href="@Url.Action("Update")" class="btn btn-warning btn-sm"> <i class="fa fa-plus"></i> Thêm mới</a>
+                    <a class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"></i> Export excel</a>
                 </div>
-                <div class="x_content">
-                    <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="dataTables_length" id="datatable_length">
-                                    <label>
-                                        Show <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> entries
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div id="datatable_filter" class="dataTables_filter">
-                                    @*<label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="datatable"></label>*@
-                                    <div class="title_right">
-                                        <div class="col-md-12 col-sm-12 col-xs-12 form-group pull-right top_search">
-                                            <div class="input-group">
-                                                <input name="name" type="text" class="form-control filter-item" placeholder="Tìm kiếm...">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-default" id="filter-btn" type="button">Go!</button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    @using (Ajax.BeginForm("Index", "DM_LyDoThatBai", null, new AjaxOptions
+                    {
+                        UpdateTargetId = "khachang-searchlist",
+                        HttpMethod = "Post",
+                        OnBegin = "Common.DM_LyDoThatBai.BeforeSend",
+                        OnSuccess = "Common.DM_LyDoThatBai.Success",
+                        OnFailure = "Common.DM_LyDoThatBai.Error"
+                    }, new { @class = "form-search form-inline form-label-left", @role = "form", @id = "khachhang-search-form" }))
+                    {
+                        <div class="hidden">
+                            <input name="SearchModel.PageNum" value="1" />
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12" id="content-box">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Số dòng hiển thị: </label>
+                                @Html.DropDownListFor(model => model.SearchModel.PageSize, MaiNguyen.GUI.Business.Common.BaseQuery.GetBinaryPageEntries(), new { @class = "form-control input-sm" })
 
                             </div>
                         </div>
-                        @*<div class="row">
-                            <div class="col-sm-5">
-                                <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                        <div class="col-sm-12 col-md-8 text-right">
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.SearchModel.Search, new { @class = "form-control", @placeholder = "Tìm theo tên, số điện thoại, email, tên công ty, ..." })
+                                <span class="input-group-btn" style="width: 1%;">
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
                             </div>
-                            <div class="col-sm-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button previous disabled" id="datatable_previous">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0">Previous</a>
-                                        </li>
-                                        <li class="paginate_button active">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0">1</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0">2</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0">3</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="4" tabindex="0">4</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="5" tabindex="0">5</a>
-                                        </li>
-                                        <li class="paginate_button ">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="6" tabindex="0">6</a>
-                                        </li>
-                                        <li class="paginate_button next" id="datatable_next">
-                                            <a href="#" aria-controls="datatable" data-dt-idx="7" tabindex="0">Next</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>*@
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="khachang-searchlist" class="table-responsive">
+                            @{ Html.RenderPartial("_IndexPartialView", Model); }
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@section scripts{
-    <script src="~/UI/Common/common-list.js"></script>
-    <script src="~/Scripts/DM_LyDoThatBai/DM_LyDoThatBai.js"></script>
-    <script type="text/javascript" language="javascript">
-        LoadList();
-    </script>
-}
+<script>
+    $(document).ready(function () {
+        if (Common.Empty(Common.DM_LyDoThatBai)) {
+            Common.DM_LyDoThatBai = new DM_LyDoThatBai({
+                Url: {
+                    Delete: '@Url.Action("Delete", "DM_LyDoThatBai")',
+                },
+            });
+        }
+        else {
+            Common.DM_LyDoThatBai.RegisterEvent();
+        }
+    });
+</script>

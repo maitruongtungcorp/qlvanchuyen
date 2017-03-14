@@ -27,7 +27,9 @@ namespace MaiNguyen.Entities.KhachHang
         public string TenCongTy { get; set; }
 
         [DataMember]
-        public int Sales { get; set; }
+        public string Sales { get; set; }
+        [DataMember]
+        public int SoDonHang { get; set; }
 
         [DataMember]
         public int Total { get; set; }

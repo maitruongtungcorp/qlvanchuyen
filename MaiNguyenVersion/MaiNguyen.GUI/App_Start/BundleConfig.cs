@@ -12,7 +12,8 @@ namespace MaiNguyen.GUI
                         "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                         "~/Scripts/jquery.unobtrusive*",
+                    "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -35,7 +36,8 @@ namespace MaiNguyen.GUI
                "~/UI/jqvmap/jqvmap.min.css",
                "~/UI/bootstrap-daterangepicker/daterangepicker.css",
                "~/UI/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css",
-               "~/UI/build/css/custom.min.css"
+                "~/UI/selected/select2.css",
+               "~/UI/build/css/custom.css"
               ));
 
             //Bootstrap JS
@@ -75,8 +77,9 @@ namespace MaiNguyen.GUI
                //bootstrap-daterangepicker
                "~/UI/moment/moment.min.js",
                 "~/UI/bootstrap-daterangepicker/daterangepicker.js",
+                "~/UI/selected/select2.full.js",
                 //Custom Theme Scripts
-                "~/UI/build/js/custom.min.js"));
+                "~/UI/build/js/custom.js"));
         }
     }
 }

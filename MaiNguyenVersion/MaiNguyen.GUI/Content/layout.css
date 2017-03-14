@@ -1,0 +1,47 @@
+﻿#admin_alert {
+    bottom: 55px;
+    position: fixed;
+    right: 12px;
+    width: 310px;
+    z-index: 999999;
+}
+
+#admin_alert > .alert::before {
+    color: #fff;
+    float: left;
+    font-family: FontAwesome;
+    font-size: 24px;
+    line-height: 18px;
+    margin: auto 0.5em auto -1.5em;
+    padding-right: 0.5em;
+    position: fixed;
+}
+#admin_alert > div {
+    background-clip: padding-box;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    box-shadow: 0 0 12px #999;
+    margin: 0 0 6px;
+    opacity: 0.8;
+    width: 300px;
+}
+.alert-dismissable .close, .alert-dismissible .close {
+    position: relative;
+    top: -6px;
+    right: -5px;
+    color: inherit;
+}
+.table>thead>tr {
+    color: #707070;
+    font-weight: 400;
+    background: #F2F2F2;
+    background-image: -webkit-linear-gradient(top,#f8f8f8 0,#ececec 100%);
+    background-image: -o-linear-gradient(top,#f8f8f8 0,#ececec 100%);
+    background-image: linear-gradient(to bottom,#f8f8f8 0,#ececec 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
+}
+.table.table-bordered>thead>tr>th:first-child {
+    border-left-color: #ddd;
+}

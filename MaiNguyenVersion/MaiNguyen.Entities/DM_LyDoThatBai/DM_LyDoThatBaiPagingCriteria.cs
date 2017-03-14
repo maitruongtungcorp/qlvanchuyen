@@ -13,8 +13,8 @@ namespace MaiNguyen.Entities.DM_LyDoThatBai
         [DataMember]
         public string Search { get; set; }
         [DataMember]
-        public int PageNum { get; set; }
+        public int? PageNum { get; set; }
         [DataMember]
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
     }
 }

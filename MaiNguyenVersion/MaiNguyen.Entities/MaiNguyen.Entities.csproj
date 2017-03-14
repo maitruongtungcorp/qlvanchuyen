@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -41,8 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ThanhPhoModel.cs" />
+    <Compile Include="DM_DonViGiaoHang\DM_DonViGiaoHangAddModel.cs" />
+    <Compile Include="DM_DonViGiaoHang\DM_DonViGiaoHangModel.cs" />
+    <Compile Include="DM_DonViGiaoHang\DM_DonViGiaoHangPagingCriteria.cs" />
+    <Compile Include="DM_LyDoThatBai\DM_LyDoThatBaiAddModel.cs" />
     <Compile Include="DM_LyDoThatBai\DM_LyDoThatBaiModel.cs" />
     <Compile Include="DM_LyDoThatBai\DM_LyDoThatBaiPagingCriteria.cs" />
+    <Compile Include="DM_NhaCungCap\DM_NhaCungCapAddModel.cs" />
+    <Compile Include="DM_NhaCungCap\DM_NhaCungCapModel.cs" />
+    <Compile Include="DM_NhaCungCap\DM_NhaCungCapPagingCriteria.cs" />
+    <Compile Include="KhachHang\KhachHangAddModel.cs" />
     <Compile Include="KhachHang\KhachHangModel.cs" />
     <Compile Include="KhachHang\KhachHangPagingCriteria.cs" />
     <Compile Include="Login\LoginModel.cs" />
