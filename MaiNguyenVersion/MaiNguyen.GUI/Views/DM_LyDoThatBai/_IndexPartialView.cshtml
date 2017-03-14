@@ -1,0 +1,77 @@
+﻿@model MaiNguyen.GUI.Business.ViewModel.DM_LyDoThatBai.DM_LyDoThatBaiViewModel
+@using PagedList.Mvc;
+@using MaiNguyen.GUI.Business.Common;
+@if (Model != null)
+{
+    if (Model.Items != null)
+    {
+        if (Model.Items.Any())
+        {
+            int i = 0;
+            <table id="table-khachang" class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th>ID</th>
+                        <th>Lý do</th>
+                        <th>Xóa</th>
+                        <th>Người tạo</th>
+                        <th>Ngày tạo</th>
+                        <th>Người sửa</th>
+                        <th>Ngày sửa</th>
+                        <th class="text-center" width="12%">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td class="text-center">@(++i)</td>
+                            <td>@item.Id</td>
+                            <td>@item.LyDo</td>
+                            <td>@item.Deleted</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.ModifiedBy</td>
+                            <td>@item.ModifiedDate</td>
+                            <td class="text-center padding5">
+                                <a href="@Url.Action("Update", "DM_LyDoThatBai", new { id = item.Id })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn btn-danger btn-xs delete-dm_lydothatbai" data-value="@item.Id"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        <!--- Pagination -->
+            <div class="paging-bottom">
+                @Html.Raw(Ajax.Pager(
+                    new Options
+                    {
+                        PageSize = Model.Items.PageSize,
+                        TotalItemCount = Model.Items[0].Total,
+                        CurrentPage = Model.Items.PageNumber,
+                        IsShowControls = true,
+                        IsShowFirstLast = true,
+                        LimitPage = 7,
+                        Link = "javascript:void(0);",
+                        OnClick = "Common.DM_LyDoThatBai.Paging({0})"
+                    }))
+            </div>
+        <!--- End Pagination -->
+
+        }
+        else
+        {
+            @Html.Partial("_AlertInfo", "Không có dữ liệu");
+        }
+    }
+    else
+    {
+        @Html.Partial("_AlertInfo", "Không có dữ liệu");
+    }
+}
+else
+{
+    @Html.Partial("_AlertInfo", "Không có dữ liệu");
+}

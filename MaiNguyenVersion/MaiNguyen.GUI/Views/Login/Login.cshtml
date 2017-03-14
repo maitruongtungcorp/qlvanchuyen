@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/UI/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/UI/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/UI/nprogress/nprogress.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link href="~/UI/animate.css/animate.min.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/UI/build/css/custom.min.css" rel="stylesheet" />
+</head>
+<body class="login">
+    <div>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1>Đăng nhập</h1>
+                        <input type="text" hidden value="@ViewBag.ReturnUrl" name="ReturnUrl" id="ReturnUrl" />
+                        <div style="color:Red;text-align: center;" id="login-failed"></div>
+                        <div>
+                            <input autocomplete="off" id="username" name="username" type="text" class="form-control" placeholder="Username" required="">
+                            <div id="usernameErr" style="display:none; color:red;">Hãy nhập tên tài khoản</div>
+                        </div>
+                        <div>
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required="">
+                            <div id="passwordErr" style="display:none; color:red;">Hãy nhập mật khẩu</div>
+                        </div>
+                        <div>
+                            <button id="login-btn" type="button" class="btn btn-success" style="width:100%;">Login</button>
+                            <div id="auth-mes" class="btn btn-success  btn-block" style="display:none; padding:6px 12px;text-align:center; margin-top:0; cursor:default">
+                                Đang chuyển hướng...
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                                <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/UI/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            /*******************press Enter text**************************/
+            $("body").on("keypress", "#username", function (e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code == 13) { //Enter keycode
+                    $("#password").focus();
+                }
+            });
+            /*******************press Enter text**************************/
+            $("body").on("keypress", "#password", function (e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code == 13) { //Enter keycode
+                    $("#login-btn").click();
+                }
+            });
+
+            $("body").on("click", "#login-btn", function (event) {
+                event.preventDefault();
+
+                $('#login-failed').html("");
+                $('#usernameErr').hide();
+                $('#passwordErr').hide();
+
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var returnUrl = $("#ReturnUrl").val();
+
+                var valid = true;
+                if (username == "" || username == null) {
+                    valid = false;
+                    $("#usernameErr").show();
+                }
+
+                if (password == "" || password == null) {
+                    valid = false;
+                    $("#passwordErr").show();
+                }
+
+                if (!valid) return;
+
+                //loging effect starts
+                $("#login-btn").hide();
+                $("#auth-mes").show();
+
+                var jsonData = {};
+                jsonData["username"] = username;
+                jsonData["password"] = password;
+                jsonData["returnUrl"] = returnUrl;
+
+                $.ajax({
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    url: '/Login/Login',
+                    dataType: 'json',
+                    data: JSON.stringify(jsonData),
+                    success: function (data) {
+                        if (data.Result) {
+                            $("#auth-mes").html("Login thành công. Đang chuyển hướng...");
+                            window.location.href = data.Url;
+                            ThongBao();
+                        }
+                        else {
+                            $("#auth-mes").hide();
+                            $("#login-btn").show();
+                            $('#login-failed').html(data.Message);
+                            $("#password").val("");
+                        }
+                    },
+                    error: function (e) {
+                        $("#auth-mes").hide();
+                        $("#login-btn").show();
+                    }
+                });
+            });
+        });
+        function ThongBao() {
+            var notify;
+            notify = new Notification(
+                        // Tiêu đề thông báo
+                        'Bạn có một thông báo mới từ website',
+                        {
+                            // Nội dung thông báo
+                            body: 'Đăng nhập thành công.',
+                            // Hình ảnh
+                            icon: 'https://scontent.fsgn2-1.fna.fbcdn.net/v/t1.0-9/13882257_1566609303644999_2918563871652654024_n.jpg?oh=6f58e0a1f2c90df438669011ed8ed8c7&oe=596DAAAA',
+                            // Đường dẫn
+                            tag: 'http://localhost:37536/'
+                        }
+                );
+            // Thực hiện khi nhấp vào thông báo
+            notify.onclick = function () {
+                // Di chuyển đến trang cho url = tag
+                window.location.href = this.tag;
+            }
+        }
+    </script>
+</body>
+</html>

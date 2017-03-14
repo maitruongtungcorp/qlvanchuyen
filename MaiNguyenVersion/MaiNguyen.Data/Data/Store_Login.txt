@@ -1,0 +1,23 @@
+USE [QuanLyVanChuyen]
+GO
+/****** Object:  StoredProcedure [dbo].[Login]    Script Date: 03/09/2017 11:56:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[Login]
+	@userName nvarchar(50),
+	@passWord nvarchar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT ac.*
+	from Account ac
+	where(ac.UserName = @userName and ac.Password = @passWord)
+END
